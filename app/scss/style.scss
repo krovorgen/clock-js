@@ -2,5 +2,163 @@
 @import "libs/reset";
 
 /* @import url("https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/12.0.1/sanitize.min.css"); */
-/* @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"); */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
 /* @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"); */
+
+.clock-js {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #fa6776, #fa6776 50%, #ffd64d 50%, #ffd64d);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -20px;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(160deg, #86d083, #86d083 50%, transparent 50%, transparent);
+        animation: animate 5s ease-in-out infinite;
+    }
+}
+
+.wrapper {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -105px;
+        border-radius: 50%;
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(rgba(#000, 0.2), transparent, transparent);
+    }
+
+    &__box {
+        position: relative;
+        z-index: 1;
+        border: 1px solid rgba(#fff, 0.5);
+        border-radius: 50%;
+        width: 400px;
+        height: 400px;
+        animation: animate 5s ease-in-out infinite;
+        animation-delay: -2.5s;
+        backdrop-filter: blur(25px);
+    }
+}
+
+.clock {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(#fff, 0.5);
+    border-right: none;
+    border-bottom: none;
+    border-radius: 50%;
+    box-shadow: -10px -10px 20px rgba(#fff, 0.1), 10px 10px 20px rgba(#000, 0.1), 0 40px 50px rgba(#000, 0.2);
+    background: radial-gradient(transparent, rgba(#fff, 0.2)), url("../images/clock.png");
+    background-size: cover;
+    backdrop-filter: blur(25px);
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: 10000;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        background: #fff;
+    }
+}
+
+.hour,
+.min,
+.sec {
+    position: absolute;
+}
+
+.hour,
+.hr {
+    width: 160px;
+    height: 160px;
+}
+
+.min,
+.mn {
+    width: 190px;
+    height: 190px;
+}
+
+.sec,
+.sc {
+    width: 230px;
+    height: 230px;
+}
+
+.hr,
+.mn,
+.sc {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.hr::before {
+    content: "";
+    position: absolute;
+    z-index: 11;
+    border-radius: 6px;
+    width: 8px;
+    height: 80px;
+    background: #ff105e;
+}
+
+.mn::before {
+    content: "";
+    position: absolute;
+    z-index: 12;
+    border-radius: 6px;
+    width: 4px;
+    height: 90px;
+    background: #fff;
+}
+
+.sc::before {
+    content: "";
+    position: absolute;
+    z-index: 12;
+    border-radius: 6px;
+    width: 2px;
+    height: 120px;
+    background: #fff;
+}
+
+@keyframes animate {
+    0%,
+    100% {
+        transform: translateY(10px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
